@@ -12,4 +12,4 @@ class Vertex {
     }
 }
 
-module.exports = { Vertex }
+module.exports = Vertex

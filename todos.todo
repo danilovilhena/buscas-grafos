@@ -1,0 +1,10 @@
+Objetivos próximos:
+[ ] Desenhar o grid no React
+[ ] Tentar reaproveitar o projeto do Garcia
+
+Buscas a realizar: 
+[ ] Busca em largura
+[ ] Busca em profundidade
+[ ] Busca de custo uniforme
+[ ] Busca gulosa pela melhor escolha
+[ ] A*
