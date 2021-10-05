@@ -1,0 +1,19 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    width: fit-content;
+}
+
+.grid-item {
+    border: 1px solid #222;
+    color: #222;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item.active{
+    background-color: #222;
+}
