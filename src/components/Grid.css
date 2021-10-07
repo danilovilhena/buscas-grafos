@@ -1,14 +1,14 @@
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(50, 1fr);
     width: fit-content;
 }
 
 .grid-item {
     border: 1px solid #222;
     color: #222;
-    width: 3rem;
-    height: 3rem;
+    width: .875rem;
+    height: .875rem;
     display: flex;
     align-items: center;
     justify-content: center;
