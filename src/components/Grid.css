@@ -9,9 +9,7 @@
     color: #222;
     width: .875rem;
     height: .875rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: pointer;
 }
 
 .grid-item.active{
