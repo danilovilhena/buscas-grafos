@@ -12,9 +12,26 @@ body{
     border-radius: .25rem;
     transition: all 0.25s ease-in-out;
     cursor: pointer;
-    margin-right: .5rem;
 }
 
 .btn:hover{
     background-color: hsl(201, 100%, 30%);
+}
+
+.btn:not(:last-child){
+    margin-right: .5rem;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+p, b{
+    margin: .5rem 0;
 }
