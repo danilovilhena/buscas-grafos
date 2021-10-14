@@ -1,12 +1,14 @@
 import "./Grid.css"
 import {generateMatrix, generateGraph} from "../helpers/graph"
+import {dfs} from "../helpers/searches"
 
 const Grid = (props) => {
     let matrix = generateMatrix()
-    let [nodes, edges] = generateGraph(matrix)
-    console.log(matrix, nodes, edges);
+    let [nodes, adjList] = generateGraph(matrix)
+    console.log(nodes, adjList);
     
     return (
+    <>
     <div className="grid-container">
         {matrix.map((row, i) => {
             return row.map((e, j) => {
@@ -14,7 +16,8 @@ const Grid = (props) => {
             })
         })}
     </div>
-    )
+    <button onClick={() => {dfs(adjList, '(0-2)', '(10-10)')}}>DFS</button>
+    </>)
 }
 
 export default Grid

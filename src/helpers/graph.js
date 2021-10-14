@@ -12,7 +12,8 @@ const generateMatrix = () => {
 const generateGraph = (matrix) => {
    let nodes = generateNodeList(matrix)
    let edges = generateEdgeList(matrix)
-   return [nodes, edges]
+   let adjList = generateAdjList(edges)
+   return [nodes, adjList]
 }
 
 const generateNodeList = (matrix) => {
@@ -50,6 +51,20 @@ const generateEdgeList = (matrix) => {
    }
    return edgeList.sort((a, b) => a - b);
 };
+
+const generateAdjList = (edgeList) => {
+   let adjList = {}
+
+   for (let i = 0; i < edgeList.length; i++) {
+      let edges = edgeList[i].split(",")
+      if (!adjList[edges[0]]) adjList[edges[0]] = []
+      if (!adjList[edges[1]]) adjList[edges[1]] = []
+
+      adjList[edges[0]].push(edges[1])
+      adjList[edges[1]].push(edges[0])
+   }
+   return adjList
+}
 
 module.exports = {
    generateMatrix,
