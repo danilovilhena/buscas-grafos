@@ -3,8 +3,8 @@ Objetivos próximos:
 [x] Tentar reaproveitar o projeto do Garcia
 
 Buscas a realizar: 
-[ ] Busca em largura
-[ ] Busca em profundidade
+[ ] Busca em largura (BFS)
+[x] Busca em profundidade (DFS)
 [ ] Busca de custo uniforme
 [ ] Busca gulosa pela melhor escolha
 [ ] A*
