@@ -8,6 +8,16 @@ const App = () => {
   let matrix = generateMatrix()
   let [nodes, adjList] = generateGraph(matrix)
 
+  const clear = () => {
+    document.querySelectorAll(".grid-item").forEach(el => {
+      el.classList.remove("origem")
+      el.classList.remove("destino")
+      el.classList.remove("caminho")
+      document.querySelector(`#origem-text`).innerText = ''
+      document.querySelector(`#destino-text`).innerText = ''
+    })
+  }
+
   const executeDfs = () => {
     let origem = document.querySelector(".grid-item.origem")
     let destino = document.querySelector(".grid-item.destino")
@@ -17,7 +27,10 @@ const App = () => {
   return (<>
     <Grid matrix={matrix}/>
     <Radios />
-    <button className="btn" onClick={() => {executeDfs()}}>DFS</button>
+    <div>
+      <button className="btn" onClick={() => {clear()}}>Limpar</button>
+      <button className="btn" onClick={() => {executeDfs()}}>DFS</button>
+    </div>
   </>);
 }
 

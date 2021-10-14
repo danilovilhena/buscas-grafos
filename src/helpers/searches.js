@@ -13,7 +13,7 @@ const dfs = async (adjList, start, end) => {
         let node = stack.pop()
         if (visited[node] === false) {
             visited[node] = true;
-            document.getElementById(node).style.backgroundColor = 'lightblue'
+            document.getElementById(node).classList.add('caminho')
             await delay(10);
             
             for (let j = 0; j < adjList[node].length; j++) {
