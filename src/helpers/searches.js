@@ -1,6 +1,8 @@
-const {Stack, Queue} = require('./structures');
+const {Stack} = require('./structures');
 
-const dfs = (adjList, start, end) => {
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+const dfs = async (adjList, start, end) => {
     let visited = {}
     let stack = new Stack()
  
@@ -11,15 +13,12 @@ const dfs = (adjList, start, end) => {
         let node = stack.pop()
         if (visited[node] === false) {
             visited[node] = true;
-            console.log(`we visited ${node}`)
+            document.getElementById(node).style.backgroundColor = 'lightblue'
+            await delay(10);
+            
             for (let j = 0; j < adjList[node].length; j++) {
                 stack.push(adjList[node][j])
-
-                document.getElementById(adjList[node][j]).style.backgroundColor = 'red';
-                if(adjList[node][j] == end) {
-                    document.getElementById(adjList[node][j]).style.backgroundColor = 'green';
-                    return
-                }
+                if(adjList[node][j] === end) return;
             }
         }
     }

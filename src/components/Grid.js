@@ -1,22 +1,24 @@
 import "./Grid.css"
-import {generateMatrix, generateGraph} from "../helpers/graph"
-import {dfs} from "../helpers/searches"
 
-const Grid = (props) => {
-    let matrix = generateMatrix()
-    let [nodes, adjList] = generateGraph(matrix)
-    console.log(nodes, adjList);
-    
+const Grid = (props) => { 
+    const clickHandler = (event) => {
+        if(!event.target.classList.contains('active')){
+            let status = document.querySelector("#origem").checked ? 'origem' : 'destino'
+            document.querySelectorAll('.grid-item').forEach(el => el.classList.remove(status))
+            event.target.classList.toggle(status)
+            document.querySelector(`#${status}-text`).innerText = event.target.id
+        }
+    }
+
     return (
     <>
     <div className="grid-container">
-        {matrix.map((row, i) => {
+        {props.matrix.map((row, i) => {
             return row.map((e, j) => {
-                return <button id={`(${i}-${j})`} key={j} className={e !== 0 ? "grid-item active" : "grid-item"}></button>
+                return <button id={`(${i}-${j})`} key={j} className={e !== 0 ? "grid-item active" : "grid-item"} onClick={clickHandler}></button>
             })
         })}
     </div>
-    <button onClick={() => {dfs(adjList, '(0-2)', '(10-10)')}}>DFS</button>
     </>)
 }
 

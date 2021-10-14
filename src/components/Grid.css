@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: repeat(50, 1fr);
     width: fit-content;
+    margin-bottom: 1rem;
+    margin-top: .5rem;
 }
 
 .grid-item {
@@ -14,4 +16,10 @@
 
 .grid-item.active{
     background-color: #222;
+}
+.grid-item.origem{
+    background-color: green !important;
+}
+.grid-item.destino{
+    background-color: red !important;
 }
