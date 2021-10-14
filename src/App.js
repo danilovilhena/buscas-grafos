@@ -8,7 +8,7 @@ import { useState } from "react";
 const App = () => {
   const [matrix, setMatrix] = useState(generateMatrix())
   const [result, setResult] = useState(false)
-  const [nodes, adjList] = generateGraph(matrix)
+  const adjList = generateGraph(matrix)
 
   const generateMap = () => {setMatrix(generateMatrix())}
 

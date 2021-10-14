@@ -1,7 +1,7 @@
 const { Stack, Queue } = require('./structures');
 
 const delay = () => new Promise(res => setTimeout(res, 10));
-const noOfVisited = (visited) => Object.values(visited).filter(el => el == true).length
+const noOfVisited = (visited) => Object.values(visited).filter(el => el === true).length
 
 const dfs = async (adjList, start, end) => {
     let startTime = performance.now()

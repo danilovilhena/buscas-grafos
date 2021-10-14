@@ -10,21 +10,10 @@ const generateMatrix = () => {
 };
 
 const generateGraph = (matrix) => {
-   let nodes = generateNodeList(matrix)
    let edges = generateEdgeList(matrix)
    let adjList = generateAdjList(edges)
-   return [nodes, adjList]
+   return adjList
 }
-
-const generateNodeList = (matrix) => {
-   let nodeList = [];
-   for (let i = 0; i < matrix.length; i++) {
-      for (let j = 0; j < matrix[i].length; j++) {
-         if (matrix[i][j] === 0) nodeList.push(`(${i}-${j})`);
-      }
-   }
-   return nodeList;
-};
 
 const generateEdgeList = (matrix) => {
    let edgeList = [];
