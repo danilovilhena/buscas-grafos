@@ -9,9 +9,9 @@ const App = () => {
   let [nodes, adjList] = generateGraph(matrix)
 
   const executeDfs = () => {
-    let origem = document.querySelector(".grid-item.origem").id
-    let destino = document.querySelector(".grid-item.destino").id
-    dfs(adjList, origem, destino)
+    let origem = document.querySelector(".grid-item.origem")
+    let destino = document.querySelector(".grid-item.destino")
+    if(origem && destino) dfs(adjList, origem.id, destino.id)
   }
 
   return (<>
