@@ -68,13 +68,10 @@ const App = () => {
         {result && <>
         <b>Resultado:</b>
         <span>Número de nós visitados: <b>{result[1]}</b></span>
-        <span>Tempo de execução: <b>{result[0].toFixed(2)} ms</b></span>
+        <span>Tempo de execução: <b>{(result[0]/1000).toFixed(2)} seg</b></span>
         </>}
       </div>
     </div>
-    
-    {/* Levou: 1.2s */}
-    {/* Nós visitados: 90 */}
   </>);
 }
 

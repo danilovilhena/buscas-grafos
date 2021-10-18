@@ -1,6 +1,7 @@
 Objetivos próximos:
 [x] Desenhar o grid no React
 [x] Tentar reaproveitar o projeto do Garcia
+[ ] Incluir as diagonais como vizinhos do grafo
 
 Buscas a realizar: 
 [x] Busca em largura (BFS)
