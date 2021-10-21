@@ -1,5 +1,5 @@
 import { generateMatrix, generateGraph } from "./helpers/graph"
-import { dfs, bfs } from "./helpers/searches"
+import { dfs, bfs, ucs } from "./helpers/searches"
 import Grid from './components/Grid';
 import Radios from './components/Radios';
 import './App.css';
@@ -43,7 +43,8 @@ const App = () => {
     let [origem, destino] = getPoints()
     
     if(origem && destino) {
-      bfs(adjList, origem.id, destino.id).then(val => {setResult(val)})
+      ucs(adjList, origem.id, destino.id).then(val => console.log(val))
+      // bfs(adjList, origem.id, destino.id).then(val => {setResult(val)})
     }
   }
 
@@ -67,7 +68,7 @@ const App = () => {
 
         {result && <>
         <b>Resultado:</b>
-        <span>Número de nós visitados: <b>{result[1]}</b></span>
+        <span>Número de nós testados: <b>{result[1]}</b></span>
         <span>Tempo de execução: <b>{(result[0]/1000).toFixed(2)} seg</b></span>
         </>}
       </div>

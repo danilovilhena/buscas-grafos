@@ -50,8 +50,97 @@ const bfs = async (adjList, start, end) => {
         }
     }
 }
+const ucs = async (adjList, start, end) => {
+    const obj = {}
+    for (let prop in adjList){ obj[prop] = {pai: null, peso: 1, vizinhos: adjList[prop]} }
+
+    obj[start].pai = -1
+    let queue = []
+    queue.push(start)
+
+    while(queue.length !== 0){
+        // debugger;
+        let node = queue.shift();
+        for (let j = 0; j < obj[node].vizinhos.length; j++) {
+            let vizinho = obj[node].vizinhos[j]
+            if(vizinho === end) return [obj, getUCSPath(obj, end)];
+
+            if(!queue.includes(vizinho)){
+                obj[vizinho].pai = node
+                obj[vizinho].peso += 1
+                document.getElementById(vizinho).classList.add('caminho')
+                await delay();
+    
+                queue.push(vizinho)
+                queue.sort((a,b) => obj[a].peso - obj[b].peso)
+            }
+        }
+    }
+}
 
 module.exports = {
     dfs,
-    bfs
+    bfs,
+    ucs
 };
+
+/*
+def bcu(self,s,t):
+    q = []
+    
+    node = Node(s)
+    node.pai = Node(-1)
+    
+    q.append(node)
+    q.sort(key=lambda x: (x.peso, x.id), reverse=True)
+    
+    while(not len(q) == 0):
+        aux = q.pop(0)
+        
+        # Teste de Objetivo           
+        if(aux.id == t):
+            return aux
+        # Teste de Objetivo
+        
+        # Expansão de vizinhos            
+        for i in range(self.n):
+            if(self.matriz[aux.id][i] > 0 and i != aux.pai.id):
+                node = Node(i)
+                node.pai = aux
+                node.peso += self.matriz[node.pai.id][i]
+                q.append(node)
+                q.sort(key=lambda x: (x.peso, x.id), reverse=True)
+        # Expansão de vizinhos
+    
+    return aux
+
+def bp(self,s,t):
+q = []
+
+node = Node(s)
+node.pai = Node(-1)       
+
+q.append(node)
+
+while(not len(q) == 0):
+    aux = q.pop()
+    
+    # Teste de Objetivo           
+    if(aux.id == t):
+        return aux
+    # Teste de Objetivo
+    
+    # Expansão de vizinhos            
+    for i in range(self.n):                
+        if(self.matriz[aux.id][i] == 1 and i != aux.pai.id):
+            node = Node(i)
+            node.pai = aux
+            q.append(node)
+    # Expansão de vizinhos
+
+return aux
+
+while(objetivo.id != -1):
+    print(objetivo.id)
+    objetivo = objetivo.pai 
+*/
