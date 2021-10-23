@@ -9,6 +9,7 @@ const App = () => {
   const [matrix, setMatrix] = useState(generateMatrix())
   const [result, setResult] = useState(false)
   const adjList = generateGraph(matrix)
+  console.log(adjList)
 
   const generateMap = () => {setMatrix(generateMatrix())}
 
@@ -17,6 +18,8 @@ const App = () => {
       el.classList.remove("origem")
       el.classList.remove("destino")
       el.classList.remove("caminho")
+      el.classList.remove("visitado")
+      el.classList.remove("expandido")
       document.querySelector(`#origem-text`).innerText = ''
       document.querySelector(`#destino-text`).innerText = ''
       setResult(false)
@@ -43,8 +46,8 @@ const App = () => {
     let [origem, destino] = getPoints()
     
     if(origem && destino) {
-      ucs(adjList, origem.id, destino.id).then(val => console.log(val))
-      // bfs(adjList, origem.id, destino.id).then(val => {setResult(val)})
+      bfs(adjList, origem.id, destino.id).then(val => {setResult(val)})
+      // ucs(adjList, origem.id, destino.id).then(val => console.log(val))
     }
   }
 

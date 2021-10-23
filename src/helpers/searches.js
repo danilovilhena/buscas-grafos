@@ -15,11 +15,12 @@ const dfs = async (adjList, start, end) => {
         let node = stack.pop()
         if (visited[node] === false) {
             visited[node] = true;
-            document.getElementById(node).classList.add('caminho')
+            if(node === end) return [performance.now() - startTime, noOfVisited(visited)];
+            document.getElementById(node).classList.add('visitado')
             await delay();
             
             for (let j = 0; j < adjList[node].length; j++) {
-                if(adjList[node][j] === end) return [performance.now() - startTime, noOfVisited(visited)];
+                document.getElementById(adjList[node][j]).classList.add('expandido')
                 stack.push(adjList[node][j])
             }
         }
@@ -33,19 +34,18 @@ const bfs = async (adjList, start, end) => {
 
     for(let node in adjList) { visited[node] = false }
     queue.enqueue(start)
-    visited[start] = true
 
     while(!queue.isEmpty()){
         let node = queue.dequeue();
-        for (let j = 0; j < adjList[node].length; j++) {
-            if(adjList[node][j] === end) return [performance.now() - startTime, noOfVisited(visited)];
+        if(visited[node] === false) {
+            visited[node] = true;
+            if(node === end) return [performance.now() - startTime, noOfVisited(visited)];
+            document.getElementById(node).classList.add('visitado')
+            await delay();
 
-            if (visited[adjList[node][j]] === false) {
-                visited[adjList[node][j]] = true;
-                document.getElementById(adjList[node][j]).classList.add('caminho')
-                await delay();
-
-                queue.enqueue(adjList[node][j]);
+            for (let j = 0; j < adjList[node].length; j++) {
+                document.getElementById(adjList[node][j]).classList.add('expandido')
+                queue.enqueue(adjList[node][j])
             }
         }
     }
