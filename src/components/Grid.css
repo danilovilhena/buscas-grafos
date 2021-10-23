@@ -24,12 +24,12 @@
 .grid-item.destino{
     background-color: red !important;
 }
-.grid-item.caminho{
-    background-color: yellow !important;
-}
 .grid-item.expandido{
     background-color: #99cfe0;
 }
 .grid-item.visitado{
     background-color: #2e7e98;
+}
+.grid-item.caminho{
+    background-color: yellow;
 }
