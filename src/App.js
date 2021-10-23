@@ -10,7 +10,7 @@ const App = () => {
   const [result, setResult] = useState(false)
   let adjList = generateGraph(matrix)
 
-  const generateMap = () => {setMatrix(generateMatrix())}
+  const generateMap = () => {clear(); setMatrix(generateMatrix())}
 
   const clear = () => {
     document.querySelectorAll(".grid-item").forEach(el => {
