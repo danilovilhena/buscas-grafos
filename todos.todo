@@ -6,6 +6,6 @@ Objetivos próximos:
 Buscas a realizar: 
 [x] Busca em largura (BFS)
 [x] Busca em profundidade (DFS)
-[ ] Busca de custo uniforme
+[x] Busca de custo uniforme
 [ ] Busca gulosa pela melhor escolha
 [ ] A*
