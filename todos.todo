@@ -7,5 +7,5 @@ Buscas a realizar:
 [x] Busca em largura (BFS)
 [x] Busca em profundidade (DFS)
 [x] Busca de custo uniforme
-[ ] Busca gulosa pela melhor escolha
-[ ] A*
+[x] Busca gulosa pela melhor escolha
+[x] A*

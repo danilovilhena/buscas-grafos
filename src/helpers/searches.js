@@ -127,10 +127,47 @@ const greedy = async (adjList, start, end) => {
     }
 }
 
+const aStar = async (adjList, start, end) => {
+    let startTime = performance.now()
+    for(let prop in adjList) {
+        let vizinhos = [...adjList[prop]]
+        adjList[prop] = {pai: null, peso: Infinity, pesoTotal: Infinity, vizinhos}
+    }
+    
+    adjList[start].peso = 0
+    let queue = []
+    queue.push(start)
+
+    while (queue.length !== 0) {
+        queue.sort((a,b) => adjList[a].pesoTotal - adjList[b].pesoTotal)
+
+        let node = queue.shift()
+        if(node === end) return [performance.now() - startTime, document.querySelectorAll('.visitado').length, adjList]
+
+        document.getElementById(node).classList.add('visitado')
+        await delay();
+
+        for (let j = 0; j < adjList[node].vizinhos.length; j++) {
+            let vizinho = adjList[node].vizinhos[j]
+            let peso = adjList[node].peso + 1
+
+            if(!queue.includes(vizinho) && vizinho !== adjList[node].pai && peso < adjList[vizinho].peso){
+                adjList[vizinho].peso = peso
+                adjList[vizinho].pesoTotal = peso + manhattan(vizinho, end)
+                adjList[vizinho].pai = node
+
+                queue.unshift(vizinho)
+                document.getElementById(vizinho).classList.add('expandido')
+            }
+        }
+    }
+}
+
 module.exports = {
     delay,
     dfs,
     bfs,
     ucs,
-    greedy
+    greedy,
+    aStar
 };

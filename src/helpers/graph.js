@@ -1,9 +1,9 @@
-const generateMatrix = () => {
+const generateMatrix = (obstacle = 1.5) => {
    let matrix = [];
    for (let i = 0; i < 50; i++) {
       matrix[i] = [];
       for (let j = 0; j < 50; j++) {
-         matrix[i][j] = Math.floor(Math.random() * 1.5);
+         matrix[i][j] = Math.floor(Math.random() * obstacle);
       }
    }
    return matrix
