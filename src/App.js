@@ -1,5 +1,5 @@
 import { generateMatrix, generateGraph } from "./helpers/graph"
-import { delay, dfs, bfs, ucs } from "./helpers/searches"
+import { delay, dfs, bfs, ucs, greedy } from "./helpers/searches"
 import Grid from './components/Grid';
 import Radios from './components/Radios';
 import './App.css';
@@ -29,7 +29,12 @@ const App = () => {
   const getPoints = () => {
     let origem = document.querySelector(".grid-item.origem")
     let destino = document.querySelector(".grid-item.destino")
-    document.querySelectorAll(".grid-item").forEach(el => {el.classList.remove("caminho")})
+    document.querySelectorAll(".grid-item").forEach(el => {
+      el.classList.remove("caminho")
+      el.classList.remove("visitado")
+      el.classList.remove("expandido")
+    })
+    adjList = generateGraph(matrix)
 
     return [origem, destino]
   }
@@ -56,12 +61,23 @@ const App = () => {
     if(origem && destino) {
       ucs(adjList, origem.id, destino.id).then(val => { 
         setResult(val)
-        getUcsPath(val[2], origem.id, destino.id) 
+        getPath(val[2], origem.id, destino.id) 
       })
     }
   }
 
-  const getUcsPath = async (adjList, start, end) => {
+  const executeGreedy = () => {
+    let [origem, destino] = getPoints()
+    
+    if(origem && destino) {
+      greedy(adjList, origem.id, destino.id).then(val => {
+        setResult(val)
+        getPath(val[2], origem.id, destino.id) 
+      })
+    }
+  }
+
+  const getPath = async (adjList, start, end) => {
     let current = end
     let path = []
 
@@ -93,6 +109,9 @@ const App = () => {
           <button className="btn" onClick={() => {executeDfs()}}>DFS</button>
           <button className="btn" onClick={() => {executeBfs()}}>BFS</button>
           <button className="btn" onClick={() => {executeUcs()}}>UCS</button>
+        </div>
+        <div className="row" style={{marginTop: '0.5rem'}}>
+          <button className="btn" onClick={() => {executeGreedy()}}>Gulosa</button>
         </div>
 
         {result && <>
