@@ -2,6 +2,7 @@ const { Stack, Queue } = require('./structures');
 
 const delay = (ms = 10) => new Promise(res => setTimeout(res, ms));
 const noOfVisited = (visited) => Object.values(visited).filter(el => el === true).length
+// |x1 - x2| + |y1 - y2|
 const manhattan = (point, end) => {
     let splitPoint = point.split('-')
     let splitEnd = end.split('-')
@@ -74,6 +75,7 @@ const ucs = async (adjList, start, end) => {
 
         let node = queue.shift()
         if(node === end) return [performance.now() - startTime, document.querySelectorAll('.visitado').length, adjList]
+
         document.getElementById(node).classList.add('visitado')
         await delay();
 

@@ -9,6 +9,7 @@ const App = () => {
   const [obstacle, setObstacle] = useState(1.5)
   const [matrix, setMatrix] = useState(generateMatrix(1.5))
   const [result, setResult] = useState(false)
+  const [cost, setCost] = useState(false)
   let adjList = generateGraph(matrix)
 
   const generateMap = () => {clear(); setMatrix(generateMatrix(obstacle))}
@@ -23,6 +24,7 @@ const App = () => {
       document.querySelector(`#origem-text`).innerText = ''
       document.querySelector(`#destino-text`).innerText = ''
       setResult(false)
+      setCost(false)
     })
     adjList = generateGraph(matrix)
   }
@@ -36,6 +38,8 @@ const App = () => {
       el.classList.remove("expandido")
     })
     adjList = generateGraph(matrix)
+    setResult(false)
+    setCost(false)
 
     return [origem, destino]
   }
@@ -102,6 +106,7 @@ const App = () => {
       document.getElementById(path[i]).classList.add('caminho')
       await delay(50)
     }
+    await setCost(document.querySelectorAll('.caminho').length)
   } 
 
   return (<>
@@ -132,8 +137,9 @@ const App = () => {
 
         {result && <>
         <b>Resultado:</b>
-        <span>Número de nós testados: <b>{result[1]}</b></span>
         <span>Tempo de execução: <b>{(result[0]/1000).toFixed(2)} seg</b></span>
+        <span>Nós testados: <b>{result[1]}</b></span>
+        {cost && <span>Custo: <b>{cost}</b></span>}
         </>}
       </div>
     </div>
