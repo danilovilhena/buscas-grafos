@@ -15,7 +15,8 @@ const Grid = (props) => {
     <div className="grid-container">
         {props.matrix.map((row, i) => {
             return row.map((e, j) => {
-                return <button id={`(${i}-${j})`} key={j} className={e !== 0 ? "grid-item active" : "grid-item"} onClick={clickHandler}></button>
+                let id = `(${i}-${j})`
+                return <button title={id} id={id} key={j} className={e !== 0 ? "grid-item active" : "grid-item"} onClick={clickHandler}></button>
             })
         })}
     </div>
