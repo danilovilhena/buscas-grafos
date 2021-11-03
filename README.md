@@ -7,6 +7,8 @@ This project implements the following graph search algorithms in a React applica
   - Greedy best-first search
   - A* search
 
+**Application link:** https://bit.ly/buscas-grafos
+
 ## Demonstration
 https://user-images.githubusercontent.com/54288190/138704887-0b839256-5212-412a-b55d-1a63e9836da4.mp4
 
