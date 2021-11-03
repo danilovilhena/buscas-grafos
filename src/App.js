@@ -126,12 +126,12 @@ const App = () => {
 
         <b>Buscas</b>
         <div className="row">
-          <button className="btn" onClick={() => {executeDfs()}}>DFS</button>
-          <button className="btn" onClick={() => {executeBfs()}}>BFS</button>
-          <button className="btn" onClick={() => {executeUcs()}}>UCS</button>
+          <button className="btn" onClick={() => {executeDfs()}}>Profundidade</button>
+          <button className="btn" onClick={() => {executeBfs()}}>Largura</button>
+          <button className="btn" onClick={() => {executeUcs()}}>Custo Uniforme</button>
         </div>
         <div className="row" style={{marginTop: '0.5rem'}}>
-          <button className="btn" onClick={() => {executeGreedy()}}>Gulosa</button>
+          <button className="btn" onClick={() => {executeGreedy()}}>BGME</button>
           <button className="btn" onClick={() => {executeAStar()}}>A*</button>
         </div>
 
