@@ -1,4 +1,4 @@
-const { Stack, Queue } = require('./structures');
+import { Stack, Queue } from './structures.js';
 
 const delay = (ms = 10) => new Promise(res => setTimeout(res, ms));
 const noOfVisited = (visited) => Object.values(visited).filter(el => el === true).length
@@ -165,7 +165,7 @@ const aStar = async (adjList, start, end) => {
     }
 }
 
-module.exports = {
+export {
     delay,
     dfs,
     bfs,

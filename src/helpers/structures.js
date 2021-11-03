@@ -40,7 +40,7 @@ class Queue {
     }
 }
 
-module.exports = {
+export {
     Stack,
     Queue
 };

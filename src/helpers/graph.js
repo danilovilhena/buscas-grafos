@@ -55,7 +55,7 @@ const generateAdjList = (edgeList) => {
    return adjList
 }
 
-module.exports = {
+export {
    generateMatrix,
    generateGraph
 };
