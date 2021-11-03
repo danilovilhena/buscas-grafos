@@ -97,7 +97,7 @@ const App = () => {
     let current = end
     let path = []
 
-    while(current != start){
+    while(current !== start){
       path.push(current)
       current = adjList[current].pai
     }
